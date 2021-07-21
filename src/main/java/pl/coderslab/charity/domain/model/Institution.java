@@ -1,5 +1,6 @@
 package pl.coderslab.charity.domain.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,16 +15,19 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = SQLConstants.CATEGORY)
+@Table(name = SQLConstants.INSTITUTION)
 @Getter
 @Setter
 @ToString
-public class Category {
+public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column @NotEmpty
+    @Column
+    @NotEmpty
     private String name;
 
+    @Column
+    private String description;
 }
