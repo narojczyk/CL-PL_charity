@@ -1,16 +1,26 @@
 package pl.coderslab.charity;
 
+//import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.domain.repository.InstitutionRepository;
 
 
 @Controller
+//@Slf4j
 public class HomeController {
+
+    private final InstitutionRepository institutionRepo;
+
+    public HomeController(InstitutionRepository institutionRepo) {
+        this.institutionRepo = institutionRepo;
+    }
 
 
     @RequestMapping("/")
     public String homeAction(Model model){
+        model.addAttribute("institutions", institutionRepo.findAll());
         return "index";
     }
 }
