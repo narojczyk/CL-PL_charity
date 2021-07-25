@@ -8,4 +8,7 @@ import pl.coderslab.charity.utils.SQLConstants;
 public interface DonationRepository extends JpaRepository<Donation,Long> {
     @Query(nativeQuery = true, value = "SELECT SUM(quantity) FROM " +  SQLConstants.DONATION)
     int sumDonatedBags();
+
+//    @Query(nativeQuery = true, value = "SELECT count(*) FROM " +  SQLConstants.DONATION)
+    int countDonationsBy();
 }
