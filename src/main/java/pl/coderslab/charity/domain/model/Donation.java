@@ -3,6 +3,7 @@ package pl.coderslab.charity.domain.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.utils.SQLConstants;
 
@@ -41,8 +42,10 @@ public class Donation {
     @Column
     private String zipCode;
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     @Column
+    @DateTimeFormat(pattern = "HH:MM")
     private LocalTime pickUpTime;
     @Column
     private String pickUpComment;
