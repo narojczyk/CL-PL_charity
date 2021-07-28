@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/taglibs.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -60,7 +61,7 @@
       <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+        <form:form action="/donations/add" method="post" modelAttribute="donation">
           <!-- STEP 1: class .active is switching steps -->
           <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
@@ -68,7 +69,7 @@
             <c:forEach items="${categories}" var="cat" >
               <div class="form-group form-group--checkbox">
                 <label>
-                  <input type="checkbox" name="categories" value="${cat.id}" />
+                  <form:checkbox path="categories" value="${cat.id}"/>
                   <span class="checkbox"></span>
                   <span class="description">${cat.name}</span>
                 </label>
@@ -87,7 +88,7 @@
             <div class="form-group form-group--inline">
               <label>
                 Liczba 60l worków:
-                <input type="number" name="bags" step="1" min="1" />
+                <form:input type="number" path="quantity" step="1" min="1" />
               </label>
             </div>
 
@@ -104,8 +105,7 @@
             <c:forEach items="${institutions}" var="inst" >
               <div class="form-group form-group--checkbox">
                 <label>
-                  <input type="radio" name="institution" value="${inst.id}" />
-<%--                  <form:radio path="institution" value="${inst.id}"/>--%>
+                  <form:radiobutton path="institution" value="${inst.id}"/>
                   <span class="checkbox radio"></span>
                   <span class="description">
                     <div class="title">Fundacja "${inst.name}"</div>
@@ -129,16 +129,16 @@
               <div class="form-section--column">
                 <h4>Adres odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Ulica <input type="text" name="address" /> </label>
+                  <label> Ulica <form:input type="text" path="street" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Miasto <input type="text" name="city" /> </label>
+                  <label> Miasto <form:input type="text" path="city" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Kod pocztowy <input type="text" name="postcode" />
+                    Kod pocztowy <form:input type="text" path="zipCode" />
                   </label>
                 </div>
 
@@ -152,17 +152,17 @@
               <div class="form-section--column">
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Data <input type="date" name="data" /> </label>
+                  <label> Data <form:input type="date" path="pickUpDate" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Godzina <input type="time" name="time" /> </label>
+                  <label> Godzina <form:input type="time" path="pickUpTime" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <textarea name="more_info" rows="5"></textarea>
+                    <form:textarea path="pickUpComment" rows="5"></form:textarea>
                   </label>
                 </div>
               </div>
@@ -183,15 +183,12 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span class="summary--text" >
-                      4 worki ubrań w dobrym stanie dla dzieci</span>
+                    <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
                   </li>
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span class="summary--text"
-                      >Dla fundacji "Mam marzenie" w Warszawie</span
-                    >
+                    <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
                   </li>
                 </ul>
               </div>
@@ -200,19 +197,19 @@
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
                   <ul>
-                    <li>Prosta 51</li>
-                    <li>Warszawa</li>
-                    <li>99-098</li>
-                    <li>123 456 789</li>
+                    <li id="confirm-street">Prosta 51</li>
+                    <li id="confirm-city">Warszawa</li>
+                    <li id="confirm-zipcode">99-098</li>
+                    <li id="confirm-phone">123 456 789</li>
                   </ul>
                 </div>
 
                 <div class="form-section--column">
                   <h4>Termin odbioru:</h4>
                   <ul>
-                    <li>13/12/2018</li>
-                    <li>15:40</li>
-                    <li>Brak uwag</li>
+                    <li id="confirm-date">13/12/2018</li>
+                    <li id="confirm-time">15:40</li>
+                    <li id="confirm-comments">Brak uwag</li>
                   </ul>
                 </div>
               </div>
@@ -223,7 +220,7 @@
               <button type="submit" class="btn">Potwierdzam</button>
             </div>
           </div>
-        </form>
+        </form:form>
       </div>
     </section>
 

@@ -27,12 +27,10 @@ public class Donation {
     @Column
     private int quantity;
 
-    @OneToMany
-    @JoinColumn(name="id_"+SQLConstants.CATEGORY)
+    @ManyToMany
     private List<Category> categories;
 
-    @OneToOne
-    @JoinColumn(name=SQLConstants.INSTITUTION+"_id")
+    @ManyToOne
     private Institution institution;
 
     @Column

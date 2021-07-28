@@ -1,15 +1,14 @@
 package pl.coderslab.charity;
 
-//import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.domain.repository.DonationRepository;
 import pl.coderslab.charity.domain.repository.InstitutionRepository;
 
+// BUG - na pustej bazie donations wywala sie strona główna
 
 @Controller
-//@Slf4j
 public class HomeController {
 
     private final InstitutionRepository institutionRepo;
