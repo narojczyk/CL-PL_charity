@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: get data from inputs and show them in summary
       var divs = form.querySelectorAll("div");
-      // var inputData = new Array();
       var categories = new Array();
       var bags = 0;
       var foundation = "";
@@ -179,30 +178,21 @@ document.addEventListener("DOMContentLoaded", function() {
       divs.forEach(d=>{
         if (d.dataset.step !== null) {
           if (d.dataset.step == 1) {
-            // console.log(d.dataset.step);
-            // console.log(d)
             var labels = d.querySelectorAll("label")
             labels.forEach(l=>{
               var input = l.querySelector("input")
               if(input.checked === true){
-                // console.log(l.querySelector(".description").innerText)
                 categories.push(l.querySelector(".description").innerText);
               }
             })
-            // console.log(categories);
           }
 
           if (d.dataset.step == 2) {
-            // console.log(d.dataset.step);
-            // console.log(d);
             var input = d.querySelector("input");
             bags = input.value;
-            // console.log(bags);
           }
 
           if (d.dataset.step == 3) {
-            // console.log(d.dataset.step);
-            // console.log(d)
             var labels = d.querySelectorAll("label")
             labels.forEach(l=>{
               var input = l.querySelector("input")
@@ -211,12 +201,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     .innerText.replace('Fundacja', 'Dla fundacji:');
               }
             })
-            // console.log(foundation);
           }
 
           if (d.dataset.step == 4) {
-            // console.log(d.dataset.step);
-            // console.log(d)
             street = d.querySelector("#street").value;
             city = d.querySelector("#city").value;
             zipCode = d.querySelector("#zipCode").value;
@@ -224,30 +211,16 @@ document.addEventListener("DOMContentLoaded", function() {
             pickDate = d.querySelector("#pickUpDate").value;
             pickTime = d.querySelector("#pickUpTime").value;
             pickComment = d.querySelector("#pickUpComment").value;
-
-            // console.log("str "+ street);
-            // console.log("cit "+ city);
-            // console.log("zip "+ zipCode);
-            // console.log("dat "+ pickDate);
-            // console.log("tim "+ pickTime);
-            // console.log("com "+ pickComment);
           }
 
           if (d.dataset.step == 5) {
-            // console.log(d.dataset.step);
-            // console.log(d)
-
             var joinCategories = "";
             categories.forEach(c=>{
               joinCategories += c + ", ";
             })
-
             var bagSpan =  d.querySelector(".icon-bag").nextElementSibling;
             bagSpan.innerHTML = bags + " worki: " + joinCategories.replace(/..$/,".");
-
             d.querySelector(".icon-hand").nextElementSibling.innerHTML = foundation;
-            // console.log(bagSpan);
-            // console.log(d.querySelector(".icon-hand").nextElementSibling);
             d.querySelector("#confirm-street").innerHTML = street;
             d.querySelector("#confirm-city").innerHTML = city;
             d.querySelector("#confirm-zipcode").innerHTML = zipCode;
@@ -255,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function() {
             d.querySelector("#confirm-date").innerHTML = pickDate;
             d.querySelector("#confirm-time").innerHTML = pickTime;
             d.querySelector("#confirm-comments").innerHTML = "Uwagi: " + pickComment;
-            // console.log(foundation);
           }
         }
       })
