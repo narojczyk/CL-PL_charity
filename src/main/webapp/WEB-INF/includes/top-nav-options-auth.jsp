@@ -2,8 +2,14 @@
 
 <nav class="container container--70">
     <ul class="nav--actions">
-        <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-        <li><a href="/registration" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+        <li class="logged-user">
+            Witaj Username
+            <ul class="dropdown">
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Moje zbiórki</a></li>
+                <li><a href="#">Wyloguj</a></li>
+            </ul>
+        </li>
     </ul>
 
     <ul>
