@@ -14,15 +14,27 @@
 
     <security:authorize access="hasRole('ADMIN')">
 
-        <section>
-            <c:if test = "${getResource == 'institutions'}">
-                <%@ include file="/WEB-INF/views/admin/insitutions.jsp" %>
-            </c:if>
 
-            <c:if test = "${getResource == 'users'}">
-                <%@ include file="/WEB-INF/views/admin/users.jsp" %>
-            </c:if>
-        </section>
+        <c:if test = "${getResource == 'institutions'}">
+            <%@ include file="/WEB-INF/views/admin/institutions.jsp" %>
+        </c:if>
+
+        <c:if test = "${getResource == 'modify-inst-form'}">
+            <%@ include file="/WEB-INF/views/admin/institutions-add-update.jsp" %>
+        </c:if>
+
+        <c:if test = "${getResource == 'add-inst-form'}">
+            <%@ include file="/WEB-INF/views/admin/institutions-add-update.jsp" %>
+        </c:if>
+
+        <c:if test = "${getResource == 'delete-inst-form'}">
+            <%@ include file="/WEB-INF/views/admin/institutions-delete.jsp" %>
+        </c:if>
+
+        <c:if test = "${getResource == 'users'}">
+            <%@ include file="/WEB-INF/views/admin/users.jsp" %>
+        </c:if>
+
 
     </security:authorize>
         <%--<footer> tag contents </footer>--%>

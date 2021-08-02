@@ -30,4 +30,13 @@ public class Institution {
 
     @Column
     private String description;
+
+    public Institution(String name, String description){
+        this.name = name;
+        this.description = description;
+    }
+
+    public Institution() {
+
+    }
 }

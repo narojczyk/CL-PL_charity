@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<section>
 <h3>Lista użytkowników</h3>
 <a href="">Dodaj użytkownika</a>
 <div>
@@ -22,5 +23,5 @@
             </tr>
         </c:forEach>
     </table></div>
-
+</section>
 <br><br>
