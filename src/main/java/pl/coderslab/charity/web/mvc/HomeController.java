@@ -27,9 +27,4 @@ public class HomeController {
         model.addAttribute("numberOfDonations", donationRepo.countDonationsBy());
         return "index";
     }
-
-    @RequestMapping("/mydonations")
-    public String userHomeAction(Model model){
-        return "user/home";
-    }
 }
