@@ -1,36 +1,47 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/taglibs.jsp" %>
 
+<!DOCTYPE html>
 <html lang="pl">
-<%--    <head> tag contents </head>--%>
-<%@ include file="/WEB-INF/includes/header.jsp" %>
 
-<body>
-<%--<headder> tag contents </headder>--%>
-<security:authorize access="isAuthenticated()">
-    <%@ include file="/WEB-INF/includes/top-nav-options-auth.jsp" %>
-</security:authorize>
+    <%@ include file="/WEB-INF/includes/header.jsp" %>
 
-<security:authorize access="isAnonymous()">
-    <%@ include file="/WEB-INF/includes/top-nav-options.jsp" %>
-</security:authorize>
+    <body>
+        <header>
+            <%--<headder> tag contents </headder>--%>
+            <security:authorize access="isAuthenticated()">
+                <%@ include file="/WEB-INF/includes/top-nav-options-auth.jsp" %>
+            </security:authorize>
 
-<div>
-    <%--Servlet content--%>
-    <h2>Registration</h2>
-    <form action="/registration" method="post">
-        <div> <label>Login: <input type="text" name="username"></label> </div>
-        <div> <label>E-mail: <input type="email" name="email"></label> </div>
-        <div> <label>Password: <input type="password" name="passwd"></label> </div>
-        <div> <label>Re-type Password: <input type="password" name="passwdConfirmed"></label> </div>
-        <input type="submit" value="Register">
-    </form>
+            <security:authorize access="isAnonymous()">
+                <%@ include file="/WEB-INF/includes/top-nav-options.jsp" %>
+            </security:authorize>
+        </header>
 
-</div>
+        <section class="login-page">
+            <h2>Załóż konto</h2>
+            <form action="/registration" method="post">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Login" />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="passwd" placeholder="Hasło" />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="passwdConfirmed" placeholder="Powtórz hasło" />
+                </div>
 
-<%--<footer> tag contents </footer>--%>
-<%@ include file="/WEB-INF/includes/footer.jsp" %>
+                <div class="form-group form-group--buttons">
+                    <input class="btn" type="submit" value="Załóż konto">
+                    <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+                </div>
+            </form>
+        </section>
 
-</body>
+        <%--<footer> tag contents </footer>--%>
+        <%@ include file="/WEB-INF/includes/footer.jsp" %>
+    </body>
 </html>
-
