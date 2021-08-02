@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.domain.model.User;
+import pl.coderslab.charity.domain.repository.InstitutionRepository;
 import pl.coderslab.charity.domain.repository.UserRepository;
 
 import java.security.Principal;
@@ -12,9 +13,11 @@ import java.util.Optional;
 @Controller
 public class UserController {
     private final UserRepository userRepo;
+    private final InstitutionRepository institutionRepo;
 
-    public UserController(UserRepository userRepo) {
+    public UserController(UserRepository userRepo, InstitutionRepository institutionRepo) {
         this.userRepo = userRepo;
+        this.institutionRepo = institutionRepo;
     }
 
     @RequestMapping("/welcome")
@@ -38,9 +41,21 @@ public class UserController {
     }
 
     @RequestMapping("/admin")
-    public String adminPanel(Principal principal, Model model){
-//        model.addAttribute("user", loggedUser);
+    public String adminPanel(){
         return "admin/home";
+    }
 
+    @RequestMapping("/admin/institutions")
+    public String listInstitutions(Model model){
+        model.addAttribute("getResource", "institutions");
+        model.addAttribute("institutions", institutionRepo.findAll());
+        return "admin/home";
+    }
+
+    @RequestMapping("/admin/users")
+    public String listUsers(Model model){
+        model.addAttribute("getResource", "users");
+        model.addAttribute("users", userRepo.findAll());
+        return "admin/home";
     }
 }

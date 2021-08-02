@@ -15,7 +15,13 @@
     <security:authorize access="hasRole('ADMIN')">
 
         <section>
-admin home page
+            <c:if test = "${getResource == 'institutions'}">
+                <%@ include file="/WEB-INF/views/admin/insitutions.jsp" %>
+            </c:if>
+
+            <c:if test = "${getResource == 'users'}">
+                <%@ include file="/WEB-INF/views/admin/users.jsp" %>
+            </c:if>
         </section>
 
     </security:authorize>
