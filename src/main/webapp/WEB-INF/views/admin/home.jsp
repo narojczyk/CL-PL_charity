@@ -14,6 +14,9 @@
 
     <security:authorize access="hasRole('ADMIN')">
 
+        <c:if test = "${getResource == 'institutions'}">
+            <a href="/admin/institutions">Lista instytucji</a>
+        </c:if>
 
         <c:if test = "${getResource == 'institutions'}">
             <%@ include file="/WEB-INF/views/admin/institutions.jsp" %>

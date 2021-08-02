@@ -12,10 +12,21 @@
             <%@ include file="/WEB-INF/includes/top-nav-options-auth.jsp" %>
         </header>
 
-        <section>
-user home page
-        </section>
+        <security:authorize access="hasRole('USER')">
+            <a href="/user/mypanel">O mnie</a><br>
+            <a href="/user/donations">Moje dary</a><br>
 
+            <br><br>
+
+            <c:if test = "${getResource == 'panel'}">
+                <%@ include file="/WEB-INF/views/user/panel-info.jsp" %>
+            </c:if>
+
+            <c:if test = "${getResource == 'donations'}">
+                <%@ include file="/WEB-INF/views/user/donations.jsp" %>
+            </c:if>
+
+        </security:authorize>
         <%--<footer> tag contents </footer>--%>
         <%@ include file="/WEB-INF/includes/footer.jsp" %>
     </body>

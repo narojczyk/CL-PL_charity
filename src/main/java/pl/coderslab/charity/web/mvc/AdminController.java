@@ -27,7 +27,8 @@ public class AdminController {
     }
 
     @GetMapping("/admin")
-    public String adminPanel(){
+    public String adminPanel(Model model){
+        model.addAttribute("getResource", "panel");
         return "admin/home";
     }
 
